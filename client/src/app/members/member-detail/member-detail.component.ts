@@ -11,40 +11,37 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class MemberDetailComponent  implements OnInit{
  member: Member  |  undefined;
- galleryOptions: NgxGalleryOptions[] =[];
- galleryImages: NgxGalleryImage[] = []; 
-
+ galleryOptions : NgxGalleryOptions[] =[];
+ galleryImages: NgxGalleryImage[] = [];
 
  constructor(private memberService: MembersService, private route: ActivatedRoute){}
-
 
   ngOnInit(): void {
     this.loadMember();
 
-    this.galleryOptions =[
+    this.galleryOptions = [
       {
-        width: '500x',
-        height: '500x',
+        width: '500px',
+        height: '500px',
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         preview: false
       }
     ]
-
   }
 
   getImages(){
-    if(!this.member) return [];
-    const ImageUrls = [];
-    for(const photo of this.member.photos){
-      ImageUrls.push({
+    if (!this.member) return [];
+    const imageUrls = [];
+    for (const photo of this.member.photos){
+      imageUrls.push({
         small: photo.url,
         medium: photo.url,
         big: photo.url
       })
     }
-    return ImageUrls;
+    return imageUrls;
   }
 
   loadMember() {
