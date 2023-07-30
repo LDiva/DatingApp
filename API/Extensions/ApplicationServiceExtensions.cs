@@ -8,7 +8,7 @@ namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+        public static object AddApplicationServices(this IServiceCollection services,
             IConfiguration config)
         {
             services.AddDbContext<DataContext>(opt =>
@@ -22,8 +22,8 @@ namespace API.Extensions
             services.Configure<CloudinarySettings>(config.GetSection("cloudinarySettings"));
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<LogUserActivity>();
-            /*services.AddScoped<ILikeRepository, LikeRepository>();
-            services.AddScoped<IMessageRepository, MessageRepository>();*/
+            services.AddScoped<ILikeRepository, LikesRepository>();
+            /*services.AddScoped<IMessageRepository, MessageRepository>();*/
             
 
             return services;
